@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Khaled Siddique - Portfolio
 
-## Getting Started
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Next.js](https://img.shields.io/badge/Next.js-13+-black?logo=next.js)](https://nextjs.org/)
+[![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?logo=vercel)](https://vercel.com)
 
-First, run the development server:
+## 🌟 Live Demo
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+🔗 [Portfolio Link](https://your-portfolio-url.vercel.app)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📌 Overview
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+A modern, performant portfolio built with Next.js showcasing my skills,
+projects, and professional journey as a web developer. Designed with a clean
+aesthetic and smooth animations to highlight my work effectively.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠️ Features
 
-## Learn More
+- **Modern UI**: Built with Tailwind CSS and Shadcn UI components
+- **Performance Optimized**: Static generation, image optimization
+- **Interactive Elements**: Smooth scroll animations and transitions
+- **Project Showcase**: Detailed case studies with tech stack highlights
+- **Responsive Design**: Fully mobile-friendly experience
 
-To learn more about Next.js, take a look at the following resources:
+## 🏗️ Tech Stack
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Frontend
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Framework**: Next.js (App Router)
+- **Styling**: Tailwind CSS
+- **UI Components**: Shadcn UI
+- **Animations**: Framer Motion
+- **Icons**: Lucide React & Iconify
+- **Form Handling**: React Hook Form
+- **Validation**: Zod
 
-## Deploy on Vercel
+### Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Hosting**: Vercel
+- **CI/CD**: GitHub Actions (optional)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🏃‍♂️ Local Development
+
+### Prerequisites
+
+- Node.js ≥18.x
+- npm/yarn/pnpm
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/khaledssbd/my-portfolio-backend.git
+   cd your-portfolio
+   ```
