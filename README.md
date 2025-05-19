@@ -34,11 +34,6 @@ aesthetic and smooth animations to highlight my work effectively.
 - **Form Handling**: React Hook Form
 - **Validation**: Zod
 
-### Deployment
-
-- **Hosting**: Vercel
-- **CI/CD**: GitHub Actions (optional)
-
 ## 🏃‍♂️ Local Development
 
 ### Prerequisites
