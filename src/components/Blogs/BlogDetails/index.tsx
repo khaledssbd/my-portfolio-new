@@ -13,6 +13,7 @@ import Image from 'next/image';
 import { useRef } from 'react';
 import { IBlog } from '@/types';
 import moment from 'moment';
+import EditorOutput from './EditorOutput';
 
 const BlogDetails = ({ blog }: { blog: IBlog }) => {
   const plugin = useRef(Autoplay({ delay: 5000, stopOnInteraction: true }));
@@ -69,12 +70,14 @@ const BlogDetails = ({ blog }: { blog: IBlog }) => {
                 <div className="flex items-center gap-3 mb-4">
                   <ShieldCheck className="w-7 h-7 text-green-600" />
                   <h2 className="text-2xl font-bold text-gray-900 dark:text-green-400">
-                    Despription
+                    Content
                   </h2>
                 </div>
-                <p className="text-gray-700 leading-relaxed dark:text-white text-lg">
+                {/* <p className="text-gray-700 leading-relaxed dark:text-white text-lg">
                   {blog.content}
-                </p>
+                </p> */}
+
+                <EditorOutput blocks={JSON.parse(blog.content).blocks} />
               </div>
             </div>
 

@@ -34,13 +34,13 @@ const BlogCard = ({ blog }: { blog: IBlog }) => {
           </h1>
         </CardTitle>
 
-        <div className="my-3 py-3 border-y border-gray-300 text-white">
-          <p>
+        <div className="my-3 py-3 border-t border-gray-300 text-white">
+          {/* <p>
             Description:{' '}
             {blog?.content?.length > 30
               ? blog?.content?.slice(0, 30) + '...'
               : blog?.content}
-          </p>
+          </p> */}
 
           <div className="flex flex-col md:flex-row items-end md:items-center justify-between gap-3 my-2">
             <p className="text-sm text-gray-400">

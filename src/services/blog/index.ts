@@ -25,10 +25,11 @@ export const getAllBlogs = async (
 };
 
 // getSingleBlog
-export const getSingleBlog = async (blogURL: string): Promise<any> => {
+export const getSingleBlogByUrl = async (blogURL: string): Promise<any> => {
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_BASE_API}/blogpost/post/${blogURL}`,
+      // { cache: 'no-store' }
       {
         next: {
           tags: ['BLOGS'],

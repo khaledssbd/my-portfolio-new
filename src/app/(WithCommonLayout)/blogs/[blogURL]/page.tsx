@@ -1,5 +1,5 @@
 import { blogDetailsMetaData } from '@/utils/Metadata';
-import { getAllBlogs, getSingleBlog } from '@/services/blog';
+import { getAllBlogs, getSingleBlogByUrl } from '@/services/blog';
 import { IBlog } from '@/types';
 import { Metadata } from 'next';
 // import Script from 'next/script';
@@ -13,8 +13,10 @@ const BlogDetailsPage = async ({
 }) => {
   const { blogURL } = await params;
 
-  const { data } = await getSingleBlog(blogURL);
+  const { data } = await getSingleBlogByUrl(blogURL);
   const blog: IBlog = data;
+
+  console.log({ blog });
 
   if (!blog) return <BlogNotFound />; // return RentalNotFound component
 
@@ -46,7 +48,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { blogURL } = await params;
 
-  const { data } = await getSingleBlog(blogURL);
+  const { data } = await getSingleBlogByUrl(blogURL);
   const blog: IBlog = data;
 
   if (!blog) return { title: 'Blog Not Found' }; // return empty object
