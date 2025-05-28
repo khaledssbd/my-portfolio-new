@@ -14,6 +14,7 @@ import Link from 'next/link';
 import { Icon } from '@iconify/react';
 import { useState } from 'react';
 import { toast } from 'sonner';
+import { scrollToSection } from './navbar';
 
 const Footer = () => {
   const [emailCopied, setEmailCopied] = useState(false);
@@ -45,7 +46,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="border-t border-gray-200 pt-10 pb-5 mt-10 bg-gradient-to-b from-transparent to-gray-900/10">
+    <footer className="border-t border-gray-200 pt-10 pb-5 mt-10 bg-[#151030]">
       <div className="max-w-6xl mx-auto px-4 text-center">
         {/* Logo Section */}
         {/* <Link href="/" className="flex items-center">
@@ -74,6 +75,7 @@ const Footer = () => {
             <li key={idx}>
               <Link
                 href={path}
+                onClick={e => path.startsWith('#') && scrollToSection(e, path)}
                 className="hover:text-blue-600 hover:font-bold transition-colors duration-200"
               >
                 {name}

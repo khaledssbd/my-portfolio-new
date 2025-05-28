@@ -16,8 +16,6 @@ const BlogDetailsPage = async ({
   const { data } = await getSingleBlogByUrl(blogURL);
   const blog: IBlog = data;
 
-  console.log({ blog });
-
   if (!blog) return <BlogNotFound />; // return RentalNotFound component
 
   // const blogDetailsSchemaData = blogDetailsPageSchemaData(blog, blogURL);

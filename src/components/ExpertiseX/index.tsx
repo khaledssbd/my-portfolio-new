@@ -17,44 +17,46 @@ const ExpertiseX = ({ expertise }: { expertise: string[] }) => {
   return (
     <div className="relative w-full h-52 md:h-72 overflow-hidden bg-black">
       {/* Marquee 1 ↘ goes top-left to bottom-right */}
-
-      <Marquee
-        autoFill
-        pauseOnClick
-        pauseOnHover
-        speed={40}
-        className="absolute -rotate-6 flex justify-around items-center gap-6 whitespace-nowrap top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full bg-gradient-to-l from-violet-600 via-blue-500 to-blue-900"
-      >
-        {expertise.map((item, index) => (
-          <span
-            key={`line1-${index}`}
-            className="text-lg font-bold text-white pr-6 py-1 flex items-center justify-center gap-6"
-          >
-            {item}
-            <Sparkle />
-          </span>
-        ))}
-      </Marquee>
+      <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
+        <Marquee
+          autoFill
+          pauseOnClick
+          pauseOnHover
+          speed={40}
+          className="-rotate-6 flex justify-around items-center gap-6 whitespace-nowrap w-full bg-gradient-to-l from-violet-600 via-blue-500 to-blue-900"
+        >
+          {expertise.map((item, index) => (
+            <span
+              key={`line1-${index}`}
+              className="text-lg font-bold text-white pr-6 py-1 flex items-center justify-center gap-6"
+            >
+              {item}
+              <Sparkle />
+            </span>
+          ))}
+        </Marquee>
+      </div>
 
       {/* Marquee 2 ↙ goes top-right to bottom-left */}
-
-      <Marquee
-        autoFill
-        pauseOnClick
-        pauseOnHover
-        speed={40}
-        direction="right"
-        className="absolute rotate-6 flex justify-around items-center gap-6 whitespace-nowrap top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full bg-gradient-to-r from-violet-600 via-blue-500 to-blue-900"
-      >
-        {expertise.map((item, index) => (
-          <div
-            key={`line2-${index}`}
-            className="text-lg font-bold text-white pr-6 py-1 flex items-center justify-center gap-6"
-          >
-            {item} <Sparkle />
-          </div>
-        ))}
-      </Marquee>
+      <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
+        <Marquee
+          autoFill
+          pauseOnClick
+          pauseOnHover
+          speed={40}
+          direction="right"
+          className="rotate-6 flex justify-around items-center gap-6 whitespace-nowrap w-full bg-gradient-to-r from-violet-600 via-blue-500 to-blue-900"
+        >
+          {expertise.map((item, index) => (
+            <div
+              key={`line2-${index}`}
+              className="text-lg font-bold text-white pr-6 py-1 flex items-center justify-center gap-6"
+            >
+              {item} <Sparkle />
+            </div>
+          ))}
+        </Marquee>
+      </div>
     </div>
   );
 };

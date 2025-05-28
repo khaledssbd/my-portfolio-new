@@ -1,6 +1,6 @@
-'use client'
+'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import type { JSX } from 'react';
 import Image from 'next/image';
 
@@ -19,10 +19,7 @@ interface ListData {
 }
 
 interface ImageData {
-  file: {
-    url: string;
-    alt?: string;
-  };
+  file: { url: string; alt?: string };
   caption?: string;
 }
 
@@ -31,20 +28,17 @@ type Block =
   | { type: 'paragraph'; data: ParagraphData }
   | { type: 'list'; data: ListData }
   | { type: 'image'; data: ImageData }
-  | { type: string; data: Record<string, unknown> };
+  | { type: string; data: Record<string, any> };
 
 interface EditorOutputProps {
   blocks: Block[] | undefined;
 }
 
-// 👉 Enhance <a> tags with Tailwind classes
 const enhanceLinks = (html: string): string => {
-  if (typeof window === 'undefined') return html; // SSR fallback
-
   const parser = new DOMParser();
   const doc = parser.parseFromString(html, 'text/html');
-
   const links = doc.querySelectorAll('a');
+
   links.forEach(link => {
     link.classList.add('text-blue-600', 'underline');
     link.setAttribute('target', '_blank');
@@ -55,14 +49,19 @@ const enhanceLinks = (html: string): string => {
 };
 
 const EditorOutput = ({ blocks }: EditorOutputProps) => {
-  console.log({ blocks });
-  if (!blocks || blocks?.length === 0) {
+  const [hydrated, setHydrated] = useState(false);
+
+  useEffect(() => {
+    setHydrated(true);
+  }, []);
+
+  if (!blocks || blocks.length === 0) {
     return <p className="text-base">No content available</p>;
   }
 
   return (
     <div className="prose max-w-none text-black whitespace-pre-line">
-      {blocks?.map((block, index) => {
+      {blocks.map((block, index) => {
         switch (block.type) {
           case 'header': {
             const level = block.data.level;
@@ -75,30 +74,29 @@ const EditorOutput = ({ blocks }: EditorOutputProps) => {
               5: 'text-lg font-medium',
               6: 'text-base font-medium',
             };
+            const rawHtml = block.data.text;
+            const enhancedHtml = hydrated ? enhanceLinks(rawHtml) : rawHtml;
+
             return React.createElement(
               HeaderTag,
               {
                 key: index,
                 className: classMap[level as keyof typeof classMap] || '',
               },
-              <span
-                dangerouslySetInnerHTML={{
-                  __html: enhanceLinks(block.data.text as string),
-                }}
-              />
+              <span dangerouslySetInnerHTML={{ __html: enhancedHtml }} />
             );
           }
 
-          case 'paragraph':
+          case 'paragraph': {
+            const rawHtml = block.data.text;
+            const enhancedHtml = hydrated ? enhanceLinks(rawHtml) : rawHtml;
+
             return (
               <p key={index} className="text-base">
-                <span
-                  dangerouslySetInnerHTML={{
-                    __html: enhanceLinks(block.data.text as string),
-                  }}
-                />
+                <span dangerouslySetInnerHTML={{ __html: enhancedHtml }} />
               </p>
             );
+          }
 
           case 'list': {
             const items = Array.isArray(block.data.items)
@@ -107,29 +105,27 @@ const EditorOutput = ({ blocks }: EditorOutputProps) => {
 
             return block.data.style === 'ordered' ? (
               <ol key={index} className="list-decimal pl-6">
-                {items.map((item, idx) => (
-                  <li
-                    key={idx}
-                    dangerouslySetInnerHTML={{
-                      __html: enhanceLinks(
-                        typeof item === 'string' ? item : item.content
-                      ),
-                    }}
-                  />
-                ))}
+                {items.map((item, idx) => {
+                  const content =
+                    typeof item === 'string' ? item : item.content;
+                  const html = hydrated ? enhanceLinks(content) : content;
+
+                  return (
+                    <li key={idx} dangerouslySetInnerHTML={{ __html: html }} />
+                  );
+                })}
               </ol>
             ) : (
               <ul key={index} className="list-disc pl-6">
-                {items.map((item, idx) => (
-                  <li
-                    key={idx}
-                    dangerouslySetInnerHTML={{
-                      __html: enhanceLinks(
-                        typeof item === 'string' ? item : item.content
-                      ),
-                    }}
-                  />
-                ))}
+                {items.map((item, idx) => {
+                  const content =
+                    typeof item === 'string' ? item : item.content;
+                  const html = hydrated ? enhanceLinks(content) : content;
+
+                  return (
+                    <li key={idx} dangerouslySetInnerHTML={{ __html: html }} />
+                  );
+                })}
               </ul>
             );
           }

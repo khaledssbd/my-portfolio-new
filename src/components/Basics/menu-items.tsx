@@ -5,14 +5,17 @@ const MenuItem = ({
   children,
   index,
   href,
+  onClick,
 }: {
   children: React.ReactNode;
   index: number;
   href: string;
+  onClick: (e: React.MouseEvent<HTMLAnchorElement>) => void;
 }) => {
   return (
     <motion.a
       href={href}
+      onClick={onClick}
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ scale: 1.05 }}

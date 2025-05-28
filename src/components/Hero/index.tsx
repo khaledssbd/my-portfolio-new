@@ -3,13 +3,14 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+// import { useRouter } from 'next/navigation';
 import { Icon } from '@iconify/react';
+import { scrollToSection } from '../Basics/navbar';
 
 export default function Hero() {
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 500], [0, 100]);
-  const router = useRouter();
+  // const router = useRouter();
 
   return (
     <section className="min-h-screen relative overflow-hidden">
@@ -136,7 +137,9 @@ export default function Hero() {
 
             <div className="flex flex-col md:flex-row justify-around items-center gap-4">
               <motion.button
-                onClick={() => router.push('#skills')}
+                onClick={e =>
+                  '#skills'.startsWith('#') && scrollToSection(e, '#skills')
+                }
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 1.2 }}

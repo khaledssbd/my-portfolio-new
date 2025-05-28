@@ -1,12 +1,14 @@
 'use client';
 
-import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
-import { useState } from 'react';
+import {
+  motion,
+  // useScroll,
+  // useMotionValueEvent
+} from 'framer-motion';
+// import { useState } from 'react';
 import MenuItem from './menu-items';
 import { GithubIcon, LinkedinIcon, XIcon, AlignRightIcon } from 'lucide-react';
 import Link from 'next/link';
-// import { GithubIcon, LinkedInIcon } from './social-icons';
-// import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import {
   Drawer,
   DrawerClose,
@@ -34,24 +36,30 @@ const socialLinks = {
   whatsApp: myWhatsAppURL,
 };
 
-export default function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  // const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { scrollY } = useScroll();
+export function scrollToSection(
+  e: React.MouseEvent<HTMLElement, MouseEvent>,
+  sectionId: string
+) {
+  e.preventDefault();
+  const section = document.querySelector(sectionId);
+  if (section) {
+    section.scrollIntoView({ behavior: 'smooth' });
+  }
+}
 
-  useMotionValueEvent(scrollY, 'change', latest => {
-    setIsScrolled(latest > 50);
-  });
+export default function Navbar() {
+  // const [isScrolled, setIsScrolled] = useState(false);
+  // const { scrollY } = useScroll();
+
+  // useMotionValueEvent(scrollY, 'change', latest => {
+  //   setIsScrolled(latest > 50);
+  // });
 
   return (
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed w-full z-50 ${
-        isScrolled
-          ? 'backdrop-blur-2xl bg-[#0a0a0a]/90 shadow-2xl shadow-[#0ea5e9]/10'
-          : 'backdrop-blur-lg bg-[#0a0a0a]/50'
-      } transition-all duration-300 ease-out`}
+      className={`fixed w-full z-50 backdrop-blur-2xl bg-gray-900/50 shadow-2xl shadow-[#0ea5e9]/10 transition-all duration-300 ease-out`}
     >
       <div className="max-w-7xl mx-auto px-6 py-3">
         <div className="flex items-center justify-between">
@@ -82,7 +90,14 @@ export default function Navbar() {
             rounded-full border border-white/5 shadow-lg shadow-[#0ea5e9]/5"
             >
               {navItems.map(({ name, path }, i) => (
-                <MenuItem key={name} index={i} href={path}>
+                <MenuItem
+                  key={name}
+                  index={i}
+                  href={path}
+                  onClick={e =>
+                    path.startsWith('#') && scrollToSection(e, path)
+                  }
+                >
                   {name}
                 </MenuItem>
               ))}
@@ -158,7 +173,10 @@ export default function Navbar() {
                         <DrawerClose asChild key={name}>
                           <Link
                             href={path}
-                            className="px-4 py-2 rounded-md text-sm font-medium text-white"
+                            onClick={e =>
+                              path.startsWith('#') && scrollToSection(e, path)
+                            }
+                            className="px-4 py-2 rounded-md text-sm font-medium text-white hover:text-[#0ea5e9]"
                           >
                             {name}
                           </Link>
