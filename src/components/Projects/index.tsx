@@ -108,70 +108,69 @@ const Projects = ({ projects }: { projects: TProject[] }) => {
               key={liveURL}
               className="bg-[#151030] rounded-lg p-5 md:p-8 flex flex-col justify-center items-center"
             >
-              <div className="flex flex-col items-center">
-                <HoverScrollImage
-                  src={image}
-                  alt={title}
-                  width={800}
-                  height={1200}
-                />
-                <div className="bg-black text-white mt-6 w-full py-3 rounded-b-2xl z-10 flex flex-col">
-                  <h3 className="text-2xl font-bold pt-5">{title}</h3>
+              {/* Image at the top */}
+              <HoverScrollImage
+                src={image}
+                alt={title}
+                width={800}
+                height={1200}
+              />
 
-                  {/* Description with fixed height and scroll */}
-                  <div className="text-base font-light text-justify px-5 py-3 h-32 overflow-y-auto">
-                    {description}
-                  </div>
+              <div className="bg-black text-white mt-6 w-full py-3 rounded-b-2xl z-10 flex flex-col flex-grow">
+                {/* title */}
+                <h3 className="text-2xl  font-bold pt-5">{title}</h3>
+                {/* Description with flex-grow & overflow-y-auto */}
+                <h3 className="text-base font-light text-justify px-5 py-3 flex-grow overflow-y-auto">
+                  {description}
+                </h3>
+                {/* features */}
+                <h3 className="text-base font-light text-justify px-5 py-3">
+                  Features: {features}
+                </h3>
 
-                  {/* Features with fixed height and scroll */}
-                  <div className="text-base font-light text-justify px-5 py-3 h-20 overflow-y-auto">
-                    <span className="font-medium">Features:</span> {features}
-                  </div>
+                {/* stacks */}
+                <div className="flex justify-center items-center gap-2">
+                  {stacks?.map((stack: string) => (
+                    <Icon icon={stack} key={stack} className="text-2xl" />
+                  ))}
+                </div>
 
-                  {/* stacks */}
-                  <div className="flex justify-center items-center gap-2 py-2">
-                    {stacks?.map((stack: string) => (
-                      <Icon icon={stack} key={stack} className="text-2xl" />
-                    ))}
-                  </div>
+                {/* liveURL */}
+                {liveURL && (
+                  <Link
+                    href={liveURL}
+                    className="text-white text-lg cursor-pointer gap-3 py-3 inline-flex items-center justify-center"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Browse Live Site <Icon icon="tabler:location-filled" />
+                  </Link>
+                )}
 
-                  {/* liveURL  */}
-                  {liveURL && (
+                <div className="text-center">
+                  {/* frontEndGitHubURL */}
+                  {frontEndGitHubURL && (
                     <Link
-                      href={liveURL}
-                      className="text-white text-lg cursor-pointer gap-3 py-3 inline-flex items-center justify-center"
+                      href={frontEndGitHubURL}
+                      className="text-white text-lg cursor-pointer flex items-center justify-center gap-3"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      Browse Live Site <Icon icon="tabler:location-filled" />
+                      Client Side on <Icon icon="mdi:github" />
                     </Link>
                   )}
 
-                  <div className="text-center">
-                    {/* frontEndGitHubURL */}
-                    {frontEndGitHubURL && (
-                      <Link
-                        href={frontEndGitHubURL}
-                        className="text-white text-lg cursor-pointer flex items-center justify-center gap-3"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Client Side on <Icon icon="mdi:github" />
-                      </Link>
-                    )}
-
-                    {/* backEndGitHubURL */}
-                    {backEndGitHubURL && (
-                      <Link
-                        href={backEndGitHubURL}
-                        className="text-white text-lg cursor-pointer flex items-center justify-center gap-3"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Server Side on <Icon icon="mdi:github" />
-                      </Link>
-                    )}
-                  </div>
+                  {/* backEndGitHubURL */}
+                  {backEndGitHubURL && (
+                    <Link
+                      href={backEndGitHubURL}
+                      className="text-white text-lg cursor-pointer flex items-center justify-center gap-3"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Server Side on <Icon icon="mdi:github" />
+                    </Link>
+                  )}
                 </div>
               </div>
             </div>
@@ -179,6 +178,7 @@ const Projects = ({ projects }: { projects: TProject[] }) => {
         )}
       </div>
 
+      {/* More Projects on GitHub */}
       <Link
         href={myGitHubURL}
         className="relative inline-flex h-12 w-2/3 md:w-60 mt-10
