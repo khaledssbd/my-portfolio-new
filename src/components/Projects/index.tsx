@@ -108,61 +108,70 @@ const Projects = ({ projects }: { projects: TProject[] }) => {
               key={liveURL}
               className="bg-[#151030] rounded-lg p-5 md:p-8 flex flex-col justify-center items-center"
             >
-              <HoverScrollImage
-                src={image}
-                alt={title}
-                width={800}
-                height={1200}
-              />
-              <div className="bg-black text-white mt-6 w-full py-3 rounded-b-2xl z-10">
-                <h3 className="text-2xl  font-bold pt-5">{title}</h3>
-                <h3 className="text-base font-light text-justify px-5 py-3 flex-grow">
-                  {description}
-                </h3>
-                <h3 className="text-base font-light text-justify px-5 py-3 flex-grow">
-                  Features: {features}
-                </h3>
+              <div className="flex flex-col items-center">
+                <HoverScrollImage
+                  src={image}
+                  alt={title}
+                  width={800}
+                  height={1200}
+                />
+                <div className="bg-black text-white mt-6 w-full py-3 rounded-b-2xl z-10 flex flex-col">
+                  <h3 className="text-2xl font-bold pt-5">{title}</h3>
 
-                {/* stacks */}
-                <div className="flex justify-center items-center gap-2">
-                  {stacks?.map((stack: string) => (
-                    <Icon icon={stack} key={stack} className="text-2xl" />
-                  ))}
-                </div>
+                  {/* Description with fixed height and scroll */}
+                  <div className="text-base font-light text-justify px-5 py-3 h-32 overflow-y-auto">
+                    {description}
+                  </div>
 
-                {liveURL && (
-                  <Link
-                    href={liveURL}
-                    className="text-white text-lg cursor-pointer gap-3 py-3 inline-flex items-center justify-center"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Browse Live Site <Icon icon="tabler:location-filled" />
-                  </Link>
-                )}
+                  {/* Features with fixed height and scroll */}
+                  <div className="text-base font-light text-justify px-5 py-3 h-20 overflow-y-auto">
+                    <span className="font-medium">Features:</span> {features}
+                  </div>
 
-                <div className="text-center">
-                  {frontEndGitHubURL && (
+                  {/* stacks */}
+                  <div className="flex justify-center items-center gap-2 py-2">
+                    {stacks?.map((stack: string) => (
+                      <Icon icon={stack} key={stack} className="text-2xl" />
+                    ))}
+                  </div>
+
+                  {/* liveURL  */}
+                  {liveURL && (
                     <Link
-                      href={frontEndGitHubURL}
-                      className="text-white text-lg cursor-pointer flex items-center justify-center gap-3"
+                      href={liveURL}
+                      className="text-white text-lg cursor-pointer gap-3 py-3 inline-flex items-center justify-center"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      Client Side on <Icon icon="mdi:github" />
+                      Browse Live Site <Icon icon="tabler:location-filled" />
                     </Link>
                   )}
 
-                  {backEndGitHubURL && (
-                    <Link
-                      href={backEndGitHubURL}
-                      className="text-white text-lg cursor-pointer flex items-center justify-center gap-3"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Server Side on <Icon icon="mdi:github" />
-                    </Link>
-                  )}
+                  <div className="text-center">
+                    {/* frontEndGitHubURL */}
+                    {frontEndGitHubURL && (
+                      <Link
+                        href={frontEndGitHubURL}
+                        className="text-white text-lg cursor-pointer flex items-center justify-center gap-3"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Client Side on <Icon icon="mdi:github" />
+                      </Link>
+                    )}
+
+                    {/* backEndGitHubURL */}
+                    {backEndGitHubURL && (
+                      <Link
+                        href={backEndGitHubURL}
+                        className="text-white text-lg cursor-pointer flex items-center justify-center gap-3"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Server Side on <Icon icon="mdi:github" />
+                      </Link>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
