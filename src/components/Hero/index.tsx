@@ -106,7 +106,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="text-6xl md:text-8xl font-bold bg-gradient-to-r
+              className="text-4xl md:text-6xl font-bold bg-gradient-to-r
         from-[#0ea5e9] via-[#8b5cf6] to-[#ec4899] 
         bg-clip-text text-transparent mb-6"
             >
@@ -127,7 +127,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.1 }}
-              className="text-xl text-[#fafafa]/80 mb-8"
+              className="text-lg md:text-xl text-[#fafafa]/80 mb-8"
             >
               Speciliazing in Next.js React.js, Redux, Prisma, PostgreSQL,
               Mongoose, Node.js, Express.js, MongoDB, CSS, Tailwind CSS, Shadcn,
@@ -144,10 +144,10 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 1.2 }}
                 whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
-                className="relative overflow-hidden px-8 py-4 rounded-full bg-[#1a1a1a] border
+                className="relative overflow-hidden px-4 md:px-8 py-2 md:py-4 rounded-full bg-[#1a1a1a] border
        border-white/10 hover:border-[#0ea5e9]/30 transition-all group"
               >
-                <span className="text-[#fafafa] group-hover:text-[#0ea5e9] transition-colors">
+                <span className="text-[#fafafa] group-hover:text-[#0ea5e9] transition-colors text-sm md:text-base">
                   Explore Skills
                 </span>
 

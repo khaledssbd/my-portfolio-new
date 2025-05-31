@@ -42,16 +42,18 @@ const Skills = ({ skills }: { skills: TSkill[] }) => {
   return (
     <div className="bg-black text-white py-20" id="skills">
       <div className="max-w-5xl mx-auto text-center">
-        <p className="text-gray-400 uppercase tracking-widest mb-2">
+        <p className="text-sm md:text-base text-gray-400 uppercase tracking-widest mb-2">
           I constantly try to improve
         </p>
-        <h2 className="text-4xl font-bold mb-10">My Skills</h2>
+        <h2 className="text-2xl md:text-4xl font-bold mb-10 text-gray-300">
+          My Skills
+        </h2>
 
         <div className="flex flex-wrap justify-center gap-2 md:gap-4 px-0 md:px-4">
           {skills.map(({ name, icon }, index) => (
             <div
               key={index}
-              className="flex items-center gap-2 px-4 py-2 bg-neutral-900 rounded-full border border-neutral-700 hover:scale-105 hover:rotate-3 transition-transform"
+              className="flex items-center gap-2 px-4 py-2 bg-neutral-900 rounded-full border border-neutral-700 hover:scale-105 hover:rotate-3 transition-transform text-sm: md:text-lg"
             >
               <span className="text-sm: md:text-lg">
                 <Icon icon={icon} />

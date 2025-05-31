@@ -16,10 +16,10 @@ const About = () => {
       id="about"
       className="p-10 md:p-32 text-center mt-7 space-y-6 text-white"
     >
-      <h3 className="text-4xl md:text-5xl text-white font-semibold">
+      <h3 className="text-3xl md:text-4xl text-gray-300 font-semibold">
         About me
       </h3>
-      <h3 className="text-lg font-light text-justify">
+      <h3 className="text-base md:text-lg font-light text-justify">
         I&apos;m Khaled Siddique, a highly motivated Web Developer with a
         passion for crafting beautiful and functional UIs. Having recently
         completed courses in MERN Stack Web Development, and Next.js, I have a
@@ -33,30 +33,30 @@ const About = () => {
         in Front-End development, I aim to deliver innovative solutions and make
         a significant impact in the industry.
       </h3>
-      <h3 className="text-4xl md:text-5xl text-white font-semibold flex gap-3 pt-10">
+      <h3 className="text-2xl md:text-5xl text-gray-300 font-semibold flex gap-3 pt-10">
         {/* <FaBookOpen className="text-accent" /> */}
         <Icon icon="noto:books" /> Education
       </h3>
 
       <div className="bg-[#0e2253] rounded-lg py-10 px-3 md:px-5 space-y-4">
-        <div className="text-4xl flex  gap-5">
-          <Icon icon="fxemoji:books" />
+        <div className="flex gap-5">
+          <Icon icon="fxemoji:books" className="text-4xl" />
           <div>
-            <h3 className="text-lg">
+            <h3 className="text-base md:text-lg text-start md:text-center">
               MASTER OF SOCIAL SCIENCE From Comilla University
             </h3>
-            <h3 className="text-base">
+            <h3 className="text-sm md:text-base text-start md:text-center text-gray-400">
               Field of study: Archaeology {'(2020)'}
             </h3>
           </div>
         </div>
-        <div className="text-4xl flex gap-5">
-          <Icon icon="fxemoji:books" />
+        <div className="flex gap-5">
+          <Icon icon="fxemoji:books" className="text-4xl" />
           <div>
-            <h3 className="text-lg">
+            <h3 className="text-base md:text-lg text-start md:text-center">
               BACHELOR OF SOCIAL SCIENCE From Comilla University
             </h3>
-            <h3 className="text-base">
+            <h3 className="text-sm md:text-base text-start md:text-center text-gray-400">
               Field of study: Archaeology {'(2019)'}
             </h3>
           </div>

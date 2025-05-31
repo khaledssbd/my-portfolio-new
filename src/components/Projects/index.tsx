@@ -90,8 +90,10 @@ const Projects = ({ projects }: { projects: TProject[] }) => {
   // ];
 
   return (
-    <div id="projects" className="py-20 text-center">
-      <h3 className="text-5xl text-white font-semibold py-20">Projects</h3>
+    <div id="projects" className="py-10 md:py-20 text-center">
+      <h3 className="text-3xl md:text-4xl text-gray-300 font-semibold pb-10 md:pb-20">
+        Projects
+      </h3>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 px-5 md:px-20">
         {projects?.map(
           ({

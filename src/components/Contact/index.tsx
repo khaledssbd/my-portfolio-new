@@ -162,7 +162,7 @@ const Contact = () => {
             <div className="text-center mt-3">
               <Button
                 type="submit"
-                className="bg-[#151030] py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-[#050816]"
+                className="bg-white hover:bg-green-500 text-[#151030] hover:text-white py-3 px-8 rounded-xl outline- w-fit  font-bold"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? (

@@ -8,10 +8,9 @@ const styles = {
   heroSubText:
     'text-[#dfd9ff] font-medium lg:text-[30px] sm:text-[26px] xs:text-[20px] text-[16px] lg:leading-[40px]',
 
-  sectionHeadText:
-    'text-white font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px]',
   sectionSubText:
-    'text-white sm:text-[18px] text-[14px] text-[#aaa6c3] uppercase tracking-wider',
+    'text-sm md:text-base text-gray-400 uppercase tracking-wider mb-2',
+  sectionHeadText: 'text-2xl md:text-4xl text-gray-300 font-black ',
 };
 
 export { styles };
